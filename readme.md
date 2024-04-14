@@ -173,6 +173,7 @@ grep -i dog animals.txt
 grep -v Chicken animals.txt | wc -l
 grep -l AA *.txt # print file contains AA
 grep -n AA BB letters.txt # print line number
+echo 'AA BB CC' | grep -o '[a-zA-Z]*'
 ```
 
 ## head
@@ -254,8 +255,15 @@ ctrl-z #background
 ## words
 
 ```
-shuf /usr/share/dict/words | head
-echo $RANDOM
+shuf /usr/share/dict/words | head # random words
+echo $RANDOM # random number
+```
+
+## awk
+
+```
+awk '/<ul class="list-main"/,/<\/ul/' ./tmp.html
+awk '{ letters[$1] += 1 } END { for (letter in letters) { print letter, letters[letter] } }' letters.txt | sort -nr -k2 | head
 ```
 
 ## commands
