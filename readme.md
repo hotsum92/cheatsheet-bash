@@ -11,6 +11,18 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
+#### echo
+
+```
+echo -e 'A\nB\nC' # enable new line
+```
+
+```
+echo """AAA
+BBB
+CCC"""
+```
+
 ## brace expansion
 
 ```
@@ -174,6 +186,7 @@ grep -v Chicken animals.txt | wc -l
 grep -l AA *.txt # print file contains AA
 grep -n AA BB letters.txt # print line number
 echo 'AA BB CC' | grep -o '[a-zA-Z]*'
+echo 'href="http://test.com/test"' | grep -oE 'http(s?)://[0-9a-zA-Z?=#+_&:/.%]+'
 ```
 
 ## head
@@ -259,11 +272,20 @@ shuf /usr/share/dict/words | head # random words
 echo $RANDOM # random number
 ```
 
+## sed
+
+```
+echo '<h2>test</h2>' | sed 's/<[^>]*>//g'
+cat tmp.html | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
+```
+
 ## awk
 
 ```
 awk '/<ul class="list-main"/,/<\/ul/' ./tmp.html
 awk '{ letters[$1] += 1 } END { for (letter in letters) { print letter, letters[letter] } }' letters.txt | sort -nr -k2 | head
+echo -e "A\nB\nC" | awk '{ printf $0 }' # remove new line
+echo '1 2 3' | awk '{ printf("%04d-%02d-%02d\n", $1, $2, $3) }'
 ```
 
 ## commands
