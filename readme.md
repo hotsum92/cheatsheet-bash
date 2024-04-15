@@ -282,10 +282,21 @@ cat tmp.html | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
 ## awk
 
 ```
+echo 'A B C' | awk '{ print $0 }'
+echo 'A B C' | awk '{ print $2 }'
+echo -e 'A B C\nA B C D' | awk '{ print "NR:" NR , "NF:" NF }'
+echo -e 'A B C\nA B C D' | awk '/C D/'
+echo -e 'A B C\nA B C D' | awk '$0 == "A B C"'
+echo -e '1 2 3\n4 5 6\n2 3 4' | awk '$1 % 2 == 0'
+
 awk '/<ul class="list-main"/,/<\/ul/' ./tmp.html
 awk '{ letters[$1] += 1 } END { for (letter in letters) { print letter, letters[letter] } }' letters.txt | sort -nr -k2 | head
 echo -e "A\nB\nC" | awk '{ printf $0 }' # remove new line
 echo '1 2 3' | awk '{ printf("%04d-%02d-%02d\n", $1, $2, $3) }'
+echo -e "A\n\nB\nC" | awk 'NF'
+echo 'A,B,C' | awk -F, '{ print $1 }'
+echo '"A B", C, D' | gawk -v FPAT='([^,]+)|(\"[^\"]+\"))' '{ print $1 }' # deal with csv but not perfect. cannot deal with new line
+echo 'a b c d' | awk 'BEGIN { OFS = "," } { $1 = $1; print $0 }'
 ```
 
 ## commands
