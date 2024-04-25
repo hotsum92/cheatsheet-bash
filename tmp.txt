@@ -1,0 +1,16 @@
+.
+./numbers.txt
+./tmp.txt
+./file.txt
+./letters.txt
+./animals.txt
+./header.csv
+./readme.md
+./A.txt
+./dates.txt
+./tmp.html
+./.git
+./numbers.csv
+./dir
+./B.txt
+./S P A C E.txt

@@ -178,6 +178,9 @@ cat A.txt B.txt
 tac A.txt B.txt # reverse. useful for time sequence file
 diff A.txt B.txt
 ```
+
+## paste
+
 ```
 paste A.txt B.txt
 paste -d, A.txt B.txt
@@ -185,6 +188,15 @@ paste -d, -s A.txt B.txt
 paste -d'\n' A.txt B.txt
 ```
 
+## join
+
+```
+join <(echo -e '1 A\n2 B') <(echo -e '1 C\n2 E\n3 F')
+```
+
+```
+join -j 2 <(echo {1..3} | xargs -n1) <(echo {1..3} | xargs -n1)
+```
 
 ## tr
 
@@ -217,6 +229,10 @@ sort -r animals.txt | head
 ```
 
 ## uniq
+
+```
+echo -e 'A\nA\nB\nB\nC\nC' | uniq -c
+```
 
 ```
 uniq -c letters.txt | sort -nr | head
@@ -262,6 +278,14 @@ echo 'test' | xargs -I{} echo {} A
 echo {1..10} | xargs -n1
 echo {1..10} | tr ' ' '\n' | xargs
 find . -print0 | xargs -0 #avoid space
+```
+
+```
+echo 'A B C' | xargs -n1
+```
+
+```
+echo -e 'A\nB\nC' | xargs
 ```
 
 ## bash
@@ -320,6 +344,32 @@ echo 'a b c d' | awk 'BEGIN { OFS = "," } { $1 = $1; print $0 }'
 ```
 echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
 ```
+
+```
+paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 == $2 { print $1, $2}'
+```
+
+```
+paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 >= $2 { print $1, $2}'
+```
+
+```
+paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 <= $2 { print $1, $2}'
+```
+
+```
+echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
+```
+
+```
+echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
+```
+
+## docker
+
+docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > ./all-databases.sql
+docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./all-databases.sql
+
 
 ## commands
 
