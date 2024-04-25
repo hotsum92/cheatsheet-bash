@@ -11,7 +11,7 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
-#### echo
+## echo
 
 ```
 echo -e 'A\nB\nC' # enable new line
@@ -27,11 +27,22 @@ CCC"""
 
 ```
 echo {A,B}.js # A.js B.js
+```
+
+```
 echo {1..10}.txt # 1.txt 2.txt ... 10.txt
-seq 1 10
-echo {1..10} | xargs -n1
-echo {1..10} | tr ' ' '\n'
-echo {A..Z} | tr -d ' '
+```
+
+```
+seq 1 10 # 1\n2\n ... 10
+```
+
+```
+echo {1..10} # 1 2 ... 10
+```
+
+```
+echo {A..Z} | tr -d ' ' # AB ... Z
 ```
 
 ## Parameter expansions
@@ -39,7 +50,10 @@ echo {A..Z} | tr -d ' '
 ### basics
 
 ```
-file='image.jpg'; echo "${file/jpg/png}" # replace
+file='image.jpg'; echo "${file/jpg/png}" # image.png
+```
+
+```
 text='error ABC error'; echo "${text//error/}" # remove all
 
 day='2024-10-23'; echo "The day is ${day:8:2}" # slice
