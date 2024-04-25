@@ -256,6 +256,14 @@ head file.txt # see the contain
 rm !$
 ```
 
+```
+echo '1+1' | bc
+echo {1..10} | tr ' ' '+' | bc
+echo {1..10} | xargs -n1 | paste -sd+ | bc
+echo {1..10} | xargs -n1 | awk '{ sum += $1 } END { print sum }'
+echo -e '2 2\n2 2\n3 2\n3 4' | awk '{count[$1]++; sum[$1]+=$2} END{for(i in count) print i, sum[i]/count[i]}'
+```
+
 ## find
 
 ```
@@ -278,6 +286,7 @@ echo 'test' | xargs -I{} echo {} A
 echo {1..10} | xargs -n1
 echo {1..10} | tr ' ' '\n' | xargs
 find . -print0 | xargs -0 #avoid space
+cat ./tmp.txt | tr '\n' '\0' | xargs -0 -n1
 ```
 
 ```
