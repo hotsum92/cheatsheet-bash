@@ -299,6 +299,10 @@ echo '"A B", C, D' | gawk -v FPAT='([^,]+)|(\"[^\"]+\"))' '{ print $1 }' # deal 
 echo 'a b c d' | awk 'BEGIN { OFS = "," } { $1 = $1; print $0 }'
 ```
 
+```
+echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
+```
+
 ## commands
 
 awk
