@@ -799,7 +799,7 @@ paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 <= $2 { 
 ##### group by line
 
 ```
-echo -e 's a\n1\n1\ne\ns b\n2\n2\n2\ns c\n3\ne' | awk '/^s.?/{ group = $2 } /^s.?/,/^e.?/{ print group, $1 } '
+echo -e 's a\n1\n1\ne\ns b\n2\n2\n2\ns c\n3\ne' | awk '/^s.?/{ group = $2 } /^s.?/,/^e.?/{ print group, $1 > group}'
 ```
 
 ##### group by file
