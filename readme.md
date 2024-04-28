@@ -15,8 +15,9 @@ nnoremap <Enter> :.w !bash<CR>
 
 ```
 echo {A,B}.js
-# A.js B.js
 ```
+
+> A.js B.js
 
 ```
 echo {1..10}.txt
