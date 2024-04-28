@@ -440,42 +440,84 @@ echo 'A B C' | tr -d ' '
 
 ## grep
 
+##### A\nB
+
 ```
-grep -i dog animals.txt
-grep -v Chicken animals.txt | wc -l
-grep -l AA *.txt # print file contains AA
-grep -n AA BB letters.txt # print line number
-echo 'AA BB CC' | grep -o '[a-zA-Z]*'
+echo -e 'A\na\nB\nb' | grep -i a
+```
+
+##### A\nB\nD
+
+```
+echo -e 'A\nB\nC\nD' | grep -v C
+```
+
+##### print only file name
+
+```
+grep -l AA <(echo -e 'AA\nBB\nCC') <(echo -e 'nDD\nEE')
+```
+
+##### file:1:AA
+
+```
+grep -n AA <(echo -e 'AA\nBB\nCC') <(echo -e 'nDD\nEE')
+```
+
+##### AA\nBB
+
+```
+echo 'AA BB CC' | grep -o '[abAB]*'
+```
+
+##### extract url
+
+```
 echo 'href="http://test.com/test"' | grep -oE 'http(s?)://[0-9a-zA-Z?=#+_&:/.%]+'
 ```
 
 ## head
 
+##### A\nB
+
 ```
-tail -n+2 header.csv
+head -n2 <(echo -e 'A\nB\nC')
 ```
 
 ## sort
 
+##### A\nB\nC
+
 ```
-sort animals.txt | head
-sort -r animals.txt | head
+echo -e 'B\nA\nC' | sort
+```
+
+##### C\nB\nA
+
+```
+echo -e 'B\nA\nC' | sort -r
+```
+
+##### 1\n02\n03
+
+```
+echo -e '03\n1\n02' | sort -n
 ```
 
 ## uniq
 
-```
-echo -e 'A\nA\nB\nB\nC\nC' | uniq -c
-```
+##### 2 A\n2 B\n1 C
 
 ```
-uniq -c letters.txt | sort -nr | head
+echo -e 'A\nA\nB\nB\nC' | uniq -c
 ```
 
 ## md5sum
 
+##### md5 filename
+
 ```
-md5sum letters.txt
+md5sum <(echo 'test')
 ```
 
 ## rm
@@ -490,20 +532,63 @@ head file.txt # see the contain
 rm !$
 ```
 
+## bc
+
+##### 2
+
 ```
 echo '1+1' | bc
+```
+
+##### sum
+
+```
 echo {1..10} | tr ' ' '+' | bc
+```
+
+##### sum
+
+```
 echo {1..10} | xargs -n1 | paste -sd+ | bc
+```
+
+paste -sd+: paste line and delimeter with +
+
+##### sum
+
+```
 echo {1..10} | xargs -n1 | awk '{ sum += $1 } END { print sum }'
+```
+
+##### sum second column grouping by first column
+
+```
 echo -e '2 2\n2 2\n3 2\n3 4' | awk '{count[$1]++; sum[$1]+=$2} END{for(i in count) print i, sum[i]/count[i]}'
 ```
 
 ## find
 
+##### find all files
+
 ```
 find . -type f
+```
+
+##### find all directories
+
+```
 find . -type d
-find . -name '*.txt'
+```
+
+##### find all files with extension
+
+```
+find . --maxdepth 1 -name '*.txt'
+```
+
+##### find all files with extension
+
+```
 find . -exec echo @ {} @ ';'
 ```
 
@@ -515,26 +600,53 @@ yes 'test' | head -n3
 
 ## xargs
 
+##### test A
+
 ```
 echo 'test' | xargs -I{} echo {} A
-echo {1..10} | xargs -n1
-echo {1..10} | tr ' ' '\n' | xargs
-find . -print0 | xargs -0 #avoid space
-cat ./tmp.txt | tr '\n' '\0' | xargs -0 -n1
 ```
 
-```
-echo 'A B C' | xargs -n1
-```
+##### 1\n2\n3
 
 ```
-echo -e 'A\nB\nC' | xargs
+echo {1..3} | xargs -n1
+```
+
+##### 1 2 3
+
+```
+echo -e '1\n2\n\3' | xargs
+```
+
+##### avoid new line
+
+```
+find . -print0 | xargs -0
+```
+
+##### separate by new line and space
+
+```
+echo -e 'a a\nb b\nc c' | xargs -n1
+```
+
+##### avoid new line
+
+```
+echo -e 'a a\nb b\nc c' | tr '\n' '\0' | xargs -0 -n1
 ```
 
 ## bash
 
+##### without cd
+
 ```
-bash -c 'cd ./dir; pwd'; pwd
+bash -c 'cd ../; pwd'; pwd
+```
+
+##### execute created command
+
+```
 echo 'print "created command"' | sed 's/print/echo/' | bash
 ```
 
@@ -555,63 +667,134 @@ echo $RANDOM # random number
 
 ## sed
 
-```
-echo '<h2>test</h2>' | sed 's/<[^>]*>//g'
-cat tmp.html | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
-```
+##### insert first line
 
 ```
-echo 'XXX 2024-10-23 XXX 2024-10-23 XXX' | sed 's/.*\(....-..-..\).*\(....-..-..\).*/\1 \2/' # extract value: 2024-10-23 2024-10-23
+echo -e 'B\nC' | sed '1iA'
+```
+
+##### append first line
+
+```
+echo -e 'A\nC' | sed '1aB'
+```
+
+##### print second line
+
+```
+echo -e 'A\nB\nC' | sed -n '2p'
+```
+
+##### delete tag
+
+```
+echo '<h2>test</h2>' | sed 's/<[^>]*>//g'
+```
+
+##### extract text inside tag
+
+```
+echo "<h1>test</h1>" | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
+```
+
+##### extract field
+
+```
+echo 'XXX 2024-10-23 XXX 2024-10-23 XXX' | sed -n 's/.*\(....-..-..\).*\(....-..-..\).*/\1 \2/p'
 ```
 
 ## awk
 
+##### A B C : A B C
+
 ```
-echo 'A B C' | awk '{ print $0 }'
-echo 'A B C' | awk '{ print $2 }'
-echo -e 'A B C\nA B C D' | awk '{ print "NR:" NR , "NF:" NF }'
+echo 'A B C' | awk '{ print $0, ":", $1, $2, $3 }'
+```
+
+##### NR:1 NF:3
+
+```
+echo -e 'A B C' | awk '{ print "NR:" NR , "NF:" NF }'
+```
+
+##### A B C D
+
+```
 echo -e 'A B C\nA B C D' | awk '/C D/'
-echo -e 'A B C\nA B C D' | awk '$0 == "A B C"'
-echo -e '1 2 3\n4 5 6\n2 3 4' | awk '$1 % 2 == 0'
+```
 
-awk '/<ul class="list-main"/,/<\/ul/' ./tmp.html
-awk '{ letters[$1] += 1 } END { for (letter in letters) { print letter, letters[letter] } }' letters.txt | sort -nr -k2 | head
-echo -e "A\nB\nC" | awk '{ printf $0 }' # remove new line
+##### A B C D
+
+```
+echo -e 'A B C\nA B C D' | awk '$4 == "D"'
+```
+
+##### 4 5 6
+
+```
+echo -e '1 2 3\n4 5 6' | awk '$1 % 2 == 0'
+```
+
+##### print target tag
+
+```
+echo -e '<ul class="list-main">\ntest\n</ul>' | awk '/<ul class="list-main"/,/<\/ul/'
+```
+
+##### 0001-02-03
+
+```
 echo '1 2 3' | awk '{ printf("%04d-%02d-%02d\n", $1, $2, $3) }'
-echo -e "A\n\nB\nC" | awk 'NF'
-echo 'A,B,C' | awk -F, '{ print $1 }'
-echo '"A B", C, D' | gawk -v FPAT='([^,]+)|(\"[^\"]+\"))' '{ print $1 }' # deal with csv but not perfect. cannot deal with new line
-echo 'a b c d' | awk 'BEGIN { OFS = "," } { $1 = $1; print $0 }'
 ```
+##### remote empty line
 
 ```
-echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
+echo -e "A\n\nB\nC" | awk 'NF'
 ```
+
+##### deal with csv but not perfect. cannot deal with new line
+
+```
+echo '"A B", C, D' | gawk -v FPAT='([^,]+)|(\"[^\"]+\"))' '{ print $1 }' # 
+```
+
+##### print second line
+
+```
+echo -e 'A\nB\nC' | awk 'NR==2'
+```
+
+##### print same column
 
 ```
 paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 == $2 { print $1, $2}'
 ```
 
+##### print greater column
+
 ```
 paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 >= $2 { print $1, $2}'
 ```
+
+##### print less column
 
 ```
 paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 <= $2 { print $1, $2}'
 ```
 
-```
-echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
-```
-
-```
-echo -e 'A\nB\nC' | awk 'NR==2' # print second line: B
-```
-
 ## docker
 
+##### dump database
+
+```
 docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > ./all-databases.sql
+```
+
+##### restore database
+
+```
 docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./all-databases.sql
+```
 
 
 ## commands
