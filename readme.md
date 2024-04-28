@@ -11,13 +11,42 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
+## brace expansion
+
+```
+echo {A,B}.js
+# A.js B.js
+```
+
+```
+echo {1..10}.txt
+# 1.txt 2.txt ... 10.txt
+```
+
+```
+seq 1 10
+# 1\n2\n ... 10
+```
+
+```
+echo {1..10}
+# 1 2 ... 10
+```
+
+```
+echo {A..Z} | tr -d ' '
+# AB ... Z
+```
+
 ## echo
 
-##### echo with new line
+### echo with new line
 
 ```
 echo -e 'A\nB\nC'
 ```
+
+### echo multiple lines
 
 ```
 echo """AAA
@@ -25,27 +54,6 @@ BBB
 CCC"""
 ```
 
-## brace expansion
-
-```
-echo {A,B}.js # A.js B.js
-```
-
-```
-echo {1..10}.txt # 1.txt 2.txt ... 10.txt
-```
-
-```
-seq 1 10 # 1\n2\n ... 10
-```
-
-```
-echo {1..10} # 1 2 ... 10
-```
-
-```
-echo {A..Z} | tr -d ' ' # AB ... Z
-```
 
 ## Parameter expansions
 
