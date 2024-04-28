@@ -13,30 +13,34 @@ nnoremap <Enter> :.w !bash<CR>
 
 ## brace expansion
 
+##### A.js B.js
+
 ```
 echo {A,B}.js
 ```
 
-> A.js B.js
+##### 1.txt 2.txt ... 10.txt
 
 ```
 echo {1..10}.txt
-# 1.txt 2.txt ... 10.txt
 ```
+
+##### 1\n2\n ... 10
 
 ```
 seq 1 10
-# 1\n2\n ... 10
 ```
+
+##### 1 2 ... 10
 
 ```
 echo {1..10}
-# 1 2 ... 10
 ```
+
+##### AB ... Z
 
 ```
 echo {A..Z} | tr -d ' '
-# AB ... Z
 ```
 
 ## echo
