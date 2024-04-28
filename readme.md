@@ -11,6 +11,79 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
+## word splitting
+
+```
+function first { echo $1; }
+```
+
+##### A
+
+```
+v='A B C'; first $v
+```
+
+##### A B C
+
+```
+v='A B C'; first "$v"
+```
+
+##### A\nB\nC
+
+```
+v='A B C';
+for i in $v; do
+  echo $i
+done
+```
+
+##### A B C
+
+```
+v='A B C';
+for i in "$v"; do
+  echo $i
+done
+```
+
+##### A A\nB B\nC C
+
+```
+v='A B C';
+while read i; do
+  echo $i
+done < <(echo -e "A A\nB B\nC C")
+```
+
+##### A A.txt\nB B.txt\nC C.txt
+
+```
+for i in *.txt; do
+  echo $i
+done
+```
+
+## arguments
+
+##### number of arguments
+
+```
+function len { echo "$#"; }; len A B C
+```
+
+##### all arguments
+
+```
+function args { echo "$@"; }; args A B C
+```
+
+##### first argument
+
+```
+function first { echo "$1"; }; first A B C
+```
+
 ## brace expansion
 
 ##### A.js B.js
@@ -104,25 +177,43 @@ echo ${day:=empty} > /dev/null; echo ${day}
 ##### /path/to
 
 ```
-path='/path/to/file.txt'; echo "${path%/*}" # /path/to
+path='/path/to/file.txt'; echo "${path%/*}"
 ```
 
 ##### /path/to/file
 
 ```
-path='/path/to/file.txt'; echo "${path%.*}" # /path/to/file
+path='/path/to/file.txt'; echo "${path%.*}"
 ```
 
 ##### txt
 
 ```
-path='/path/to/file.txt'; echo "${path##*.}" # txt
+path='/path/to/file.txt'; echo "${path##*.}"
 ```
 
 ##### file.txt
 
 ```
-path='/path/to/file.txt'; echo "${path##*/}" # file.txt
+path='/path/to/file.txt'; echo "${path##*/}"
+```
+
+## loop
+
+##### basic
+
+```
+for i in {1..10}; do echo $i; done
+```
+
+##### read file line by line
+
+```
+while read file; do echo $file; done < <(find . -name '*.txt')
+```
+
+```
+while read line; do echo $line; done < file.txt
 ```
 
 ## redirect
@@ -155,40 +246,6 @@ echo 'test' &> error-std.txt
 
 ```
 grep BB <(echo -e 'AA\nBB\nCC')
-```
-
-## echo
-
-##### echo with new line
-
-```
-echo -e 'A\nB\nC'
-```
-
-##### echo multiple lines
-
-```
-echo """AAA
-BBB
-CCC"""
-```
-
-## loop
-
-```
-for i in ./*.txt; do echo $i; done # can be with spaces
-while read file; do echo $file; done < <(find . -name '*.txt') # can be with spaces
-for i in {1..10}; do echo $i; done
-while read line; do echo $line; done < file.txt
-```
-
-## arguments
-
-```
-echo "$#" # number of arguments
-echo "$@" # "$1" "$2" ...
-echo "$*" # "$1 $2 ..."
-echo "$1" # first argument
 ```
 
 ## conditions
@@ -226,6 +283,22 @@ echo "$1" # first argument
 [ -e file.txt ] && [ -e dir ] && echo 'file and dir exists'
 ```
 
+## echo
+
+##### echo with new line
+
+```
+echo -e 'A\nB\nC'
+```
+
+##### echo multiple lines
+
+```
+echo """AAA
+BBB
+CCC"""
+```
+
 ## date
 
 ```
@@ -234,51 +307,135 @@ date "+%Y-%m-%d %H:%M:%S"
 
 ## curl
 
+##### post json
+
 ```
-cat sample.json | curl -X POST -d @- -H "Content-Type: application/json" http://localhost:3000
+curl -d "{\"hello\": \"world\"}" -H "Content-Type: application/json" http://localhost:8000
 ```
+
+##### read from stdin
+
+```
+cat sample.json | curl -X POST -d @- -H "Content-Type: application/json" http://localhost:8000
+```
+
+##### use cookie
+
+```
+curl -c cookie.txt -b cookie.txt -b "name1=value1" http://localhost:8000/cookie
+```
+
+-c: save cookie
+-b: load cookie
+
+##### Basic Auth
+
+```
+curl --basic -u user:password http://localhost:8000
+```
+
+##### Basic Auth without option
+
+```
+curl -u user:password http://localhost:8000 \
+    -H "Authorization:Basic $(echo -n user:password | base64)"
+```
+
+echo -n: no new line for avoiding encoding new line
+
 
 ## cut
 
+##### 1 4
+
 ```
-cat numbers.txt | cut -f1,4 | head -n2
-cat numbers.txt | cut -f2-4
-cat numbers.csv | cut -d, -f1,4
-cat dates.txt | cut -c1-4
-df | awk '{ print $1 }' # separate field with space and tab but cut is default tab
+echo '1	2	3	4	5	6' | cut -f1,4
+```
+
+##### 2 3 4
+
+```
+echo '1 2 3 4 5' | cut -d' ' -f2-4
+```
+
+##### 2 3 4 5
+
+```
+echo '1 2 3 4 5' | cut -d' ' -f2-
+```
+
+##### 1234
+
+```
+echo '1234-67-90' | cut -c1-4
 ```
 
 ## cat
 
+##### A\nB\nC
+
 ```
-cat A.txt B.txt
-tac A.txt B.txt # reverse. useful for time sequence file
-diff A.txt B.txt
+cat <(echo -e 'A\nB\nC')
+```
+
+##### A\nB\nC
+
+```
+cat <(echo 'A') <(echo 'B') <(echo 'C')
+```
+
+##### C\nB\nA
+
+```
+tac <(echo -e 'A\nB\nC')
 ```
 
 ## paste
 
+##### A\t1\nB\t2\nC\t3
+
 ```
-paste A.txt B.txt
-paste -d, A.txt B.txt
-paste -d, -s A.txt B.txt
-paste -d'\n' A.txt B.txt
+paste <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
+```
+
+##### A,1\nB,2\nC,3
+
+```
+paste -d, <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
+```
+
+##### A,B,C\n1,2,3
+
+```
+paste -d, -s <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
 ```
 
 ## join
+
+##### join with firt column
 
 ```
 join <(echo -e '1 A\n2 B') <(echo -e '1 C\n2 E\n3 F')
 ```
 
+##### all combinations
+
 ```
-join -j 2 <(echo {1..3} | xargs -n1) <(echo {1..3} | xargs -n1)
+join -j 2 <(echo -e '1\n2\n3') <(echo -e '1\n2\n3')
 ```
 
 ## tr
 
+##### A\nB\nC
+
 ```
-echo 'path/A:path/B:root/C' | tr : '\n'
+echo 'A:B:C' | tr : '\n'
+```
+
+##### ABC
+
+```
+echo 'A B C' | tr -d ' '
 ```
 
 ## grep
