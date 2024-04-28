@@ -11,6 +11,14 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
+## quotes
+
+##### 'A'
+
+```
+echo ''\''A'\'''
+```
+
 ## word splitting
 
 ```
