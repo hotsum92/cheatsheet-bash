@@ -1,6 +1,6 @@
 # cheatsheet-bash
 
-## execute oneline in Vim
+## execute in Vim
 
 ```bash
 :.w !bash
@@ -13,8 +13,10 @@ nnoremap <Enter> :.w !bash<CR>
 
 ## echo
 
+##### echo with new line
+
 ```
-echo -e 'A\nB\nC' # enable new line
+echo -e 'A\nB\nC'
 ```
 
 ```
