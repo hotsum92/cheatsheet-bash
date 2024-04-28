@@ -424,6 +424,8 @@ join <(echo -e '1 A\n2 B') <(echo -e '1 C\n2 E\n3 F')
 join -j 2 <(echo -e '1\n2\n3') <(echo -e '1\n2\n3')
 ```
 
+join -j 2 <(echo -e '1\n2\n3') <(echo -e '1\n2\n3') | awk '!a[$1][$2]{ print $1, $2, a[$1][$2] } {a[$2][$1]++}'
+
 ## tr
 
 ##### A\nB\nC
@@ -752,6 +754,18 @@ echo '1 2 3' | awk '{ printf("%04d-%02d-%02d\n", $1, $2, $3) }'
 echo -e "A\n\nB\nC" | awk 'NF'
 ```
 
+##### remote duplicate line
+
+```
+echo -e "A\nA\nB\nC" | awk '!a[$1]++'
+```
+
+##### remote duplicate combination
+
+```
+echo -e "A B\nA B\nB A\nC D" | awk '!a[$1][$2]++ && !a[$2][$1]++'
+```
+
 ##### deal with csv but not perfect. cannot deal with new line
 
 ```
@@ -795,7 +809,6 @@ docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_RO
 ```
 docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./all-databases.sql
 ```
-
 
 ## commands
 
