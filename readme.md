@@ -796,6 +796,18 @@ paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 >= $2 { 
 paste <(echo {1..11} | xargs -n1) <(echo {11..1} | xargs -n1) | awk '$1 <= $2 { print $1, $2}'
 ```
 
+##### group by line
+
+```
+echo -e 's a\n1\n1\ne\ns b\n2\n2\n2\ns c\n3\ne' | awk '/^s.?/{ group = $2 } /^s.?/,/^e.?/{ print group, $1 } '
+```
+
+##### group by file
+
+```
+awk '{ print FILENAME, $0 }' <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
+```
+
 ## docker
 
 ##### dump database
@@ -809,24 +821,3 @@ docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_RO
 ```
 docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./all-databases.sql
 ```
-
-## commands
-
-awk
-diff
-cut
-expand
-expr
-fmt
-grep
-head
-lex
-mre
-paste
-roff
-sed
-sort
-tail
-test
-tr
-wc
