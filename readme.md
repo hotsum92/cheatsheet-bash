@@ -816,6 +816,40 @@ echo -e 's a\n1\n1\ne\ns b\n2\n2\n2\ns c\n3\ne' | awk '/^s.?/{ group = $2 } /^s.
 awk '{ print FILENAME, $0 }' <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
 ```
 
+## set operation
+
+##### union
+
+A B C || B C D = B C
+
+```
+cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') | sort | uniq
+```
+
+##### intersection
+
+A B C && B C D = B C
+
+```
+cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') | sort | uniq -d
+```
+
+##### difference
+
+A B C diff B C D = A D
+
+```
+cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') | sort | uniq -u
+```
+
+A B C - B C D = A
+
+pass multiple times "BCD" to remove "BCD"
+
+```
+cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') <(echo -e 'B\nC\nD') | sort | uniq -u
+```
+
 ## docker
 
 ##### dump database
