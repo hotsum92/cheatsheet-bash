@@ -11,6 +11,19 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
+## deal withm tmp file
+
+[more detail](https://unix.stackexchange.com/questions/181937/how-create-a-temporary-file-in-shell-script)
+
+```bash
+tmpfile=$(mktemp /tmp/apc-script.XXXXXX)
+
+exec 3>"$tmpfile"
+exec 4<"$tmpfile"
+
+rm "$tmpfile"
+```
+
 ## quotes
 
 ##### 'A'
