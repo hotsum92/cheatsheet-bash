@@ -877,3 +877,29 @@ MYSQL_PWD=pwd mysql -u root -p -e 'show databases;'
 ```
 mysql -N -s -u root -p -e 'show databases;'
 ```
+
+## php
+
+##### interactive php
+
+```
+php -a
+```
+
+##### develop server
+
+```
+php -S localhost:8000
+```
+
+##### execute php by every input line
+
+```
+echo {1..3} | xargs -n1 | php -R 'echo $argn,"\n";'
+```
+
+##### decode url
+
+```
+echo 'http%3A%2F%2F%E3%83%86%E3%82%B9%E3%83%88.com' | php -R 'echo urldecode($argn), "\n";'
+```
