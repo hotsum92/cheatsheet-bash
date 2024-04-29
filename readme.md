@@ -777,7 +777,7 @@ echo -e "A B\nA B\nB A\nC D" | awk '!a[$1][$2]++ && !a[$2][$1]++'
 ##### deal with csv but not perfect. cannot deal with new line
 
 ```
-echo '"A B", C, D' | gawk -v FPAT='([^,]+)|(\"[^\"]+\"))' '{ print $1 }' # 
+echo '"A B", C, D' | gawk -v FPAT='([^,]+)|(\"[^\"]+\"))' '{ print $1 }'
 ```
 
 ##### print second line
