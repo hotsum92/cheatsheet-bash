@@ -871,3 +871,9 @@ docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < .
 ```
 MYSQL_PWD=pwd mysql -u root -p -e 'show databases;'
 ```
+
+##### execute query without header and border
+
+```
+mysql -N -s -u root -p -e 'show databases;'
+```
