@@ -863,3 +863,11 @@ docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_RO
 ```
 docker exec -i some-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./all-databases.sql
 ```
+
+## mysql
+
+##### execute query
+
+```
+MYSQL_PWD=pwd mysql -u root -p -e 'show databases;'
+```
