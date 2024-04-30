@@ -749,13 +749,13 @@ echo 'PascalCase' | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[A-Z]' '[a-z]'
 ##### snake_case to PascalCase
 
 ```
-echo 'snake_case' | awk -F '_' '{ for(i=1; i<=NF; i++) {printf toupper(substr($i,1,1)) substr($i,2)}} END {print ""}'
+echo 'snake_case' | awk -F '_' '{ str=""; for(i=1; i<=NF; i++) {str = str toupper(substr($i,1,1)) substr($i,2)} print str}'
 ```
 
 ##### snake_case to camelCase
 
 ```
-echo 'snake_case' | awk -F '_' '{ printf $1; for(i=2; i<=NF; i++) {printf toupper(substr($i,1,1)) substr($i,2)}} END {print ""}'
+echo 'snake_case' | awk -F '_' '{ str=$1; for(i=2; i<=NF; i++) {str = str toupper(substr($i,1,1)) substr($i,2)} print str}'
 ```
 
 ##### extract multi text inside tag
