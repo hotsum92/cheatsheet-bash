@@ -328,6 +328,13 @@ date "+%Y-%m-%d %H:%M:%S"
 
 ## curl
 
+##### get with parameter
+
+```
+curl -G -d key='value' localhost:8080
+```
+
+
 ##### post json
 
 ```
