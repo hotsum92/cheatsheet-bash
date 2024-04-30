@@ -470,6 +470,12 @@ echo 'A B C' | tr -d ' '
 
 ## grep
 
+##### fixed string
+
+```
+echo '$-[]' | grep -F -e '$-[]'
+```
+
 ##### A\nB
 
 ```
@@ -716,6 +722,25 @@ echo $RANDOM # random number
 ```
 
 ## sed
+
+##### options
+
+BRE .[\*^$
+ERE .[\*^$()+?{|
+
+```
+echo 'test' | sed -E 's/(es)/x\1x/g'
+```
+
+```
+echo '++xx++' | sed 's/+/a/g'
+```
+
+##### test test
+
+```
+echo 'test' | sed 's/.*/& &/'
+```
 
 ##### insert first line
 
