@@ -743,7 +743,6 @@ echo "<h1>test</h1>" | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
 ##### PascalCase or camelCase to snake_case
 
 ```
-echo 'CamelCase' | sed 's/[A-Z]/_&/g' | sed 's/^_//' | tr '[:upper:]' '[:lower:]'
 echo 'PascalCase' | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[A-Z]' '[a-z]'
 ```
 
