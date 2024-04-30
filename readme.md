@@ -979,3 +979,31 @@ echo {1..3} | xargs -n1 | php -R 'echo $argn,"\n";'
 ```
 echo 'http%3A%2F%2F%E3%83%86%E3%82%B9%E3%83%88.com' | php -R 'echo urldecode($argn), "\n";'
 ```
+
+## jq
+
+##### "1"\n"2"
+
+```
+echo '{"items":[{"name":"1"},{"name":"2"}]}' | jq '.items[].name'
+```
+
+##### 1\n2
+
+```
+echo '{"items":[{"name":"1"},{"name":"2"}]}' | jq -r '.items[].name'
+```
+
+##### format { "n": "1", "v": "a" }
+
+```
+echo '{"items":[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]}' | jq '.items[] | { n: .name, v: .value }'
+```
+
+##### csv
+
+```
+echo '{"items":[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]}' | jq -r '.items[] | [ .name, .value ] | @csv'
+```
+
+
