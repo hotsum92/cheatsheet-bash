@@ -475,6 +475,12 @@ echo -e 'A\na\nB\nb' | grep -i a
 echo -e 'A\nB\nC\nD' | grep -v C
 ```
 
+##### match shortest
+
+```
+echo 'test;test;test;' | grep -oE 't[^;]*;'
+```
+
 ##### print only file name
 
 ```
@@ -497,6 +503,12 @@ echo 'AA BB CC' | grep -o '[abAB]*'
 
 ```
 echo 'href="http://test.com/test"' | grep -oE 'http(s?)://[0-9a-zA-Z?=#+_&:/.%]+'
+```
+
+##### print first line
+
+```
+grep -rn -m1 .
 ```
 
 ## head
@@ -553,6 +565,14 @@ rm !$ # remote last matched
 ```
 head file.txt # see the contain
 rm !$
+```
+
+## split
+
+##### create file with line
+
+```
+echo -e 'A\nB\nC' split -l 1
 ```
 
 ## bc
@@ -720,11 +740,36 @@ echo '<h2>test</h2>' | sed 's/<[^>]*>//g'
 echo "<h1>test</h1>" | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
 ```
 
+##### extract multi text inside tag
+
+```
+echo """
+<head>
+<title>
+A
+B
+C
+</title>
+</head>
+""" | sed -n '/<title>/,/<\/title>/p'
+```
+
 ##### extract field
 
 ```
 echo 'XXX 2024-10-23 XXX 2024-10-23 XXX' | sed -n 's/.*\(....-..-..\).*\(....-..-..\).*/\1 \2/p'
 ```
+
+## mkdir
+
+##### create directory
+
+ignore error, create parent directory
+
+```
+mkdir -p dir1/dir2
+```
+
 
 ## awk
 
