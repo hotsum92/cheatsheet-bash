@@ -1006,4 +1006,8 @@ echo '{"items":[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]}' | jq '.it
 echo '{"items":[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]}' | jq -r '.items[] | [ .name, .value ] | @csv'
 ```
 
+```
+echo '[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]' | jq -c '.[]'
+```
+
 
