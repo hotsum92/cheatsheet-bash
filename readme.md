@@ -356,6 +356,18 @@ curl -c cookie.txt -b cookie.txt -b "name1=value1" http://localhost:8000/cookie
 -c: save cookie
 -b: load cookie
 
+##### query parameter
+
+```
+curl -G -d key='value' http://localhost:8000
+```
+
+or
+
+```
+curl http://localhost:8000?key=value
+```
+
 ##### Basic Auth
 
 ```
@@ -371,6 +383,18 @@ curl -u user:password http://localhost:8000 \
 
 echo -n: no new line for avoiding encoding new line
 
+##### echo error
+
+```
+result=$(curl localhost:8000)
+
+if [ $? -ne 0 ]; then
+  echo "Error: curl failed"
+  exit 1
+fi
+
+echo "$result"
+```
 
 ## cut
 
