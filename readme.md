@@ -871,12 +871,6 @@ or
 awk -f file -v template=template data.txt
 ```
 
-##### template 2
-
-```
-
-```
-
 ##### snake_case to PascalCase
 
 ```
