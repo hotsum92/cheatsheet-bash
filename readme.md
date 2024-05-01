@@ -827,11 +827,16 @@ echo 'PascalCase' | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[A-Z]' '[a-z]'
 ##### template
 
 ```
-data='A B\nC D'
+{ "value": "\1", "value": "\2" }
+```
 
-echo -e "$data" \
-    | awk '{ print "sed -e '\''s/\\\\1/" $1 "/'\''" " -e '\''s/\\\\2/" $2 "/'\''" " template" }' \
-    | bash
+```
+sed -e 's/\\1/A/' -e 's/\\2/B/' template
+sed -e 's/\\1/C/' -e 's/\\2/D/' template
+```
+
+```
+echo -e "A B\nC D" | awk '{ print "sed -e '\''s/\\\\1/" $1 "/'\''" " -e '\''s/\\\\2/" $2 "/'\''" " template" }' | bash
 ```
 
 or
@@ -844,6 +849,28 @@ file will be ...
 
 ```
 { print "sed -e 's/\\\\1/" $1 "/'" " -e 's/\\\\2/" $2 "/'" " template" }
+```
+
+or
+
+```
+{
+  str="sed ";
+
+  for(i=1;i<=NF;i++) {
+    str=str" -e 's/\\\\"i"/"$i"/'";
+  }
+
+  str=str" template";
+
+  print str;
+}
+```
+
+##### template 2
+
+```
+
 ```
 
 ##### snake_case to PascalCase
