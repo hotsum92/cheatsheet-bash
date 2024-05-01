@@ -125,6 +125,24 @@ echo {1..10}.txt
 seq 1 10
 ```
 
+##### uuid
+
+```
+for i in `seq 50`; do echo `uuidgen`; done | sort | uniq
+```
+
+##### random string
+
+```
+cat /dev/urandom | tr -dc 'A-Z' | fold -w 16 | head -10000
+```
+
+##### 010 020 ... 100
+
+```
+seq -s " " -w 010 100
+```
+
 ##### 1 2 ... 10
 
 ```
@@ -802,6 +820,28 @@ echo "<h1>test</h1>" | grep -o '<h1>.*</h1>' | sed 's#<h1>\(.*\)</h1>#\1#'
 echo 'PascalCase' | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[A-Z]' '[a-z]'
 ```
 
+##### template
+
+```
+data='A B\nC D'
+
+echo -e "$data" \
+    | awk '{ print "sed -e '\''s/\\\\1/" $1 "/'\''" " -e '\''s/\\\\2/" $2 "/'\''" " template" }' \
+    | bash
+```
+
+or
+
+```
+echo $data | awk -f file | bash
+```
+
+file will be ...
+
+```
+{ print "sed -e 's/\\\\1/" $1 "/'" " -e 's/\\\\2/" $2 "/'" " template" }
+```
+
 ##### snake_case to PascalCase
 
 ```
@@ -1024,6 +1064,8 @@ MYSQL_PWD=pwd mysql -u root -p -e 'show databases;'
 ```
 mysql -N -s -u root -p -e 'show databases;'
 ```
+
+-N: no header
 
 ## php
 
