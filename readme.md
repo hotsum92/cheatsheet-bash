@@ -924,6 +924,21 @@ echo -e 's a\n1\n1\ne\ns b\n2\n2\n2\ns c\n3\ne' | awk '/^s.?/{ group = $2 } /^s.
 awk '{ print FILENAME, $0 }' <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
 ```
 
+##### remove last 2 columns
+
+```
+echo '1	2	3r	4' | awk -F'\t' 'BEGIN { OFS = "\t" } {$NF="";$(NF-1)="";print $0}'
+```
+
+## column
+
+```
+echo -e 'AAAA,BBB,CCCC\n001,00002,03' | column -t -s ','
+```
+
+-t : table format
+-s : separator
+
 ## set operation
 
 ##### union
