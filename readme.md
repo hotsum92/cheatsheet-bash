@@ -1102,6 +1102,12 @@ mysql -N -s -u root -p -e 'show databases;'
 
 -N: no header
 
+##### mysql dump
+
+```
+mysqldump --single-transaction {database} {table} > {file}
+```
+
 ## php
 
 ##### interactive php
