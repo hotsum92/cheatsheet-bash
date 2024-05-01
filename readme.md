@@ -861,10 +861,14 @@ or
     str=str" -e 's/\\\\"i"/"$i"/'";
   }
 
-  str=str" template";
+  str=str" "template;
 
   print str;
 }
+```
+
+```
+awk -f file -v template=template data.txt
 ```
 
 ##### template 2
