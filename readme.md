@@ -488,13 +488,17 @@ paste -d, -s <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
 join <(echo -e '1 A\n2 B') <(echo -e '1 C\n2 E\n3 F')
 ```
 
-##### all combinations
+##### all permutation
 
 ```
 join -j 2 <(echo -e '1\n2\n3') <(echo -e '1\n2\n3')
 ```
 
+##### all combinations
+
+```
 join -j 2 <(echo -e '1\n2\n3') <(echo -e '1\n2\n3') | awk '!a[$1][$2]{ print $1, $2, a[$1][$2] } {a[$2][$1]++}'
+```
 
 ## tr
 
