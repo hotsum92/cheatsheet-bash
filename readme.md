@@ -812,6 +812,12 @@ echo -e 'A\nB\nC' | sed -n '2p'
 echo '<h2>test</h2>' | sed 's/<[^>]*>//g'
 ```
 
+##### extract tag
+
+```
+echo 'test<a>test</a>test' | grep -oE '<a.*>.*?</a>'
+```
+
 ##### extract text inside tag
 
 ```
