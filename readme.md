@@ -853,6 +853,8 @@ echo '<h2>test</h2>' | sed 's/<[^>]*>//g'
 echo 'test<a>test</a>test' | grep -oE '<a.*>.*?</a>'
 ```
 
+`.*?` : shortest match
+
 ##### extract text inside tag
 
 ```
