@@ -26,6 +26,41 @@ rm "$tmpfile"
 
 ## quotes
 
+##### xargs cat
+
+/Place/='http://www.google.com'
+
+```
+echo "/Place/=\'http://www.google.com\'" | xargs echo
+echo "/Place/='http://www.google.com'" | sed "s/\'/\\\'/g" | xargs echo
+```
+
+a'b'c
+d
+
+```
+{ echo "a'b'c"; echo d; } | xargs -0 echo
+```
+
+abc d
+
+```
+{ echo "a'b'c"; echo d; } | xargs echo
+```
+
+test
+
+```
+echo ''\'''\''"test"'\'''\''' | xargs echo
+```
+
+''"test"''
+
+```
+echo ''\'''\''"test"'\'''\''' | cat -
+```
+
+
 ##### 'A'
 
 ```
