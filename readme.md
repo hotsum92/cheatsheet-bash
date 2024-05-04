@@ -596,7 +596,7 @@ echo 'AA BB CC' | grep -o '[abAB]*'
 ##### extract url
 
 ```
-echo 'href="http://test.com/test"' | grep -oE 'http(s?)://[0-9a-zA-Z?=#+_&:/.%]+'
+echo 'href="http://test.com/test"' | grep -oE 'http(s?)://(\w|:|%|#|\$|&|\?|\(|\)|~|\.|=|\+|\-|/)+'
 ```
 
 ##### print first line
