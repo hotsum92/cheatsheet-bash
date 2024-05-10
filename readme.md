@@ -661,6 +661,12 @@ head file.txt # see the contain
 rm !$
 ```
 
+## mv
+
+```
+ls *.bak | sed 's/\(.*\).bak/mv & \1/' | bash
+```
+
 ## split
 
 ##### create file with line
@@ -1143,6 +1149,22 @@ mysql -N -s -u root -p -e 'show databases;'
 
 ```
 mysqldump --single-transaction {database} {table} > {file}
+```
+
+##### user list
+
+```
+select user, host from mysql.user;
+```
+
+##### user authorization
+
+```
+select * from mysql.db;
+```
+
+```
+show grants for {username};
 ```
 
 ## php
