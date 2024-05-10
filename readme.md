@@ -1143,6 +1143,13 @@ MYSQL_PWD=pwd mysql -u root -p -e 'show databases;'
 mysql -N -s -u root -p -e 'show databases;'
 ```
 
+##### db summary
+
+```
+select "db_name" as DB_NAME, table_name, table_rows
+from information_schema.TABLES where table_schema = 'db_name' and table_rows > 0;
+```
+
 -N: no header
 
 ##### mysql dump
