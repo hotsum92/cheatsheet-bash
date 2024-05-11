@@ -1185,7 +1185,7 @@ php -a
 ##### develop server
 
 ```
-php -S localhost:8000
+php -S localhost:8000 <rouetr.php>
 ```
 
 ##### execute php by every input line
