@@ -1078,7 +1078,7 @@ echo '1	2	3r	4' | awk -F'\t' 'BEGIN { OFS = "\t" } {$NF="";$(NF-1)="";print $0}'
 echo -e 'AAAA,BBB,CCCC\n001,00002,03' | column -t -s ','
 ```
 
--t : table format
+-t : table format, delete separator
 -s : separator
 
 ## set operation
