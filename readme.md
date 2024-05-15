@@ -379,6 +379,12 @@ CCC"""
 date "+%Y-%m-%d %H:%M:%S"
 ```
 
+ISO 8601UTC: year=2024 month=4 day=15 hour=8 minitue=16 second=16
+
+```
+date -d "2024-04-15T08:16:16.000Z" -u +"%Y-%m-%dT%H:%M:%S.000Z"
+```
+
 ## curl
 
 ##### get with parameter
