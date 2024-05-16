@@ -47,3 +47,9 @@ current line
 :vim {pattern} app/views/**/*.erb
 :vim {pattern} app/views/**/_*.erb
 ```
+
+### diff
+
+```
+windo diffthis
+```
