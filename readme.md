@@ -24,6 +24,39 @@ exec 4<"$tmpfile"
 rm "$tmpfile"
 ```
 
+## options
+
+### not continue script
+
+```
+#!/bin/bash -eu
+```
+
+-e: exit when error
+-u: exit when undefined variable
+
+### debug
+
+```
+set -x
+echo "$(echo 'A') B" "C $(echo 'D')"
+set +x
+```
+
+### string
+
+### heredoc
+
+```
+json=$(cat << EOS
+{
+  "key": "value"
+}
+EOS
+)
+echo "$json"
+```
+
 ## quotes
 
 ##### xargs cat
@@ -355,6 +388,28 @@ grep BB <(echo -e 'AA\nBB\nCC')
 [ -f file.txt ] && [ ! -f dir ] && echo 'file exists'
 [ -d dir ] && [ ! -d file.txt ] && echo 'directory exists'
 [ -e file.txt ] && [ -e dir ] && echo 'file and dir exists'
+[[ '{errors: {}}' =~ .*errors.* ]] && echo 'errors'
+function args { [ $# -eq 0 ] && echo 'no arguments'; }; args
+```
+
+### test arguments
+
+```
+CMD_NAME=$(basename $0)
+
+if [ $# -eq 2 ]; then
+  echo "$CMD_NAME <arg1> <arg2>"
+  exit 1
+fi
+```
+
+### test return code
+
+```
+if [ $? -ne 0 ]; then
+  echo "Error: command failed"
+  exit 1
+fi
 ```
 
 ## echo
