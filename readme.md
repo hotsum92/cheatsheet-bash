@@ -11,6 +11,10 @@
 nnoremap <Enter> :.w !bash<CR>
 ```
 
+## args
+
+https://zenn.dev/kawarimidoll/articles/d546892a6d36eb
+
 ## deal withm tmp file
 
 [more detail](https://unix.stackexchange.com/questions/181937/how-create-a-temporary-file-in-shell-script)
