@@ -24,6 +24,15 @@ exec 4<"$tmpfile"
 rm "$tmpfile"
 ```
 
+## trap
+
+```bash
+trap "echo 'clean tmp file($tmpfile)'; rm $tmpfile;" 0
+```
+
+0: when script exit
+
+
 ## options
 
 ### not continue script
@@ -49,6 +58,18 @@ set +x
 
 ```
 json=$(cat << EOS
+{
+  "key": "value"
+}
+EOS
+)
+echo "$json"
+```
+
+### avoid expanding variable
+
+```
+json=$(cat << 'EOS'
 {
   "key": "value"
 }
