@@ -1,5 +1,15 @@
 # vim
 
+## open link
+
+```
+vim http://www.google.com
+```
+
+```
+curl http://www.google.com | vim -
+```
+
 ## cmd
 
 ### execute commmand
