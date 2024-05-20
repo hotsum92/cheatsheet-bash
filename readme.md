@@ -719,6 +719,11 @@ echo -e 'B\nA\nC' | sort -r
 echo -e '03\n1\n02' | sort -n
 ```
 
+-t,: separator
+-r: reverse
+-k2: second column
+-n: number
+
 ## uniq
 
 ##### 2 A\n2 B\n1 C
