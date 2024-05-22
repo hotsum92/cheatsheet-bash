@@ -33,7 +33,50 @@ awk '$1 ~ $2' <(echo 'http://test.com/path/1 http(s?)://(\w|:|%|#|\$|&|\?|\(|\)|
 ## transform
 
 ```
+```
 
+## substr
+
+```
+echo 'abcde' | awk '$0 = substr($0, 2)'
+echo 'abcde' | awk '{print substr($0, index($0, "d"))}'
+echo 'abcde' | awk 'match($0, /b.*/) {print RSTART, RLENGTH}'
+echo 'abcde' | awk 'match($0, /b.*/) {print substr($0, RSTART, RLENGTH)}'
+echo 'abcde' | awk 'match($0, /(cd)/, a){print a[1]}'
+```
+
+
+```
+text=$(cat <<'EOF'
+a
+b
+c
+a
+b
+c
+EOF
+)
+
+echo "$text" | tr -d '\n'
+```
+
+## rm dupicate
+
+```
+echo -e '1 Beth\n2 Dan\n3 Beth' | awk '!seen[$2]++'
+```
+
+## skip header
+
+```
+echo -e 'header\nBeth 0\nDan 40' | awk 'NR > 1'
+```
+
+## skip header and concat
+
+```
+awk 'FNR!=1||NR==1'
+```
 
 ## print certain line
 
