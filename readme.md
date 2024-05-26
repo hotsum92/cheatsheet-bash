@@ -732,6 +732,12 @@ echo -e '03\n1\n02' | sort -n
 echo -e 'A\nA\nB\nB\nC' | uniq -c
 ```
 
+##### A\nB
+
+```
+echo -e 'A\nA\nB\nB\nC' | uniq -d
+```
+
 ## md5sum
 
 ##### md5 filename

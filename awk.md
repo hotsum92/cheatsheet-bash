@@ -47,6 +47,7 @@ echo 'abcde' | awk 'match($0, /(cd)/, a){print a[1]}'
 
 
 ```
+
 text=$(cat <<'EOF'
 a
 b
@@ -56,8 +57,8 @@ b
 c
 EOF
 )
+echo "$text" | tr '\n' ' ' | sed 's/a/\na/g' | awk '$0 !~ /^$/' | sed 's/ $//'
 
-echo "$text" | tr -d '\n'
 ```
 
 ## rm dupicate
@@ -190,3 +191,13 @@ data1 5
 echo "$text" | awk '/^header/ { header=$2; next } /^data1/ { data1=$2; next } { print header, data1 }'
 ```
 
+## ref
+
+```
+echo -e 'name06\tname17\nname08\tname19' \
+    | awk 'BEGIN { while ((getline < "table.tsv") > 0) { table[$1][$2] = $3 } } { print table[$1][$2] }'
+```
+
+```
+awk 'FNR==NR { table[$1][$2] = $3; next; } { print table[$1][$2] }' table.tsv <(echo -e 'name06\tname17\nname08\tname19')
+```
