@@ -41,6 +41,12 @@ cat ./sample.json | jq -r '.items[].name'
 cat ./sample.json | jq '[.items[] | {name: .name, size: .size}]'
 ```
 
+## select deep
+
+```
+cat ./sample.json | jq '[.items[] | {name: .name, size: .size, owner_id: .owner.id, owner_name: .owner.name}]'
+```
+
 ## filter
 
 ```
