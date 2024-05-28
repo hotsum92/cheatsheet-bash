@@ -1297,6 +1297,12 @@ echo {1..3} | xargs -n1 | php -R 'echo $argn,"\n";'
 echo 'http%3A%2F%2F%E3%83%86%E3%82%B9%E3%83%88.com' | php -R 'echo urldecode($argn), "\n";'
 ```
 
+##### encode url
+
+```
+jq --arg q 日本語 --arg ie UTF-8 -nr '@uri "https://www.google.com/search?q=\($q)&ie=\($ie)"'
+```
+
 ## jq
 
 ##### "1"\n"2"
