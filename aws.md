@@ -33,4 +33,8 @@ aws logs describe-log-groups
 aws logs tail --follow
 ```
 
+
 aws logs filter-log-events --log-group-name [ロググループ名] [その他オプション]
+sqs
+lambda
+
