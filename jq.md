@@ -96,5 +96,5 @@ ruby -rjson -ryaml -e 'print JSON.parse(STDIN.read).to_yaml' < sample.json
 ##### yaml to json
 
 ```
-ruby -rjson -ryaml -e 'print YAML.load(STDIN.read).to_json' < sample.yaml
+ruby -rjson -ryaml -e 'print YAML.load(STDIN.read).to_json' < sample.json
 ```
