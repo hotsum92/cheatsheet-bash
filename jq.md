@@ -84,3 +84,17 @@ printf 'foo\nbar'
 ```
 cat ./sample.json | jq -r '.' | awk -F: '/"[^"]+":[^\[{]+$/ {print $2; next} {print "" }' | tr -d '", '
 ```
+
+## yaml
+
+##### json to yaml
+
+```
+ruby -rjson -ryaml -e 'print JSON.parse(STDIN.read).to_yaml' < sample.json
+```
+
+##### yaml to json
+
+```
+ruby -rjson -ryaml -e 'print YAML.load(STDIN.read).to_json' < sample.yaml
+```
