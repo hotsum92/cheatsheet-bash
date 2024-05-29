@@ -1345,4 +1345,24 @@ echo '{"items":[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]}' | jq -r '
 echo '[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]' | jq -c '.[]'
 ```
 
+## diff
+
+```
+
+a=$(cat << EOS
+A
+B	K
+C
+EOS
+)
+b=$(cat << EOS
+ A
+B K
+D
+EOS
+)
+diff -w <(echo "$a") <(echo "$b")
+
+```
+
 
