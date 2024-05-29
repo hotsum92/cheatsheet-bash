@@ -274,6 +274,12 @@ ls [1-4].txt
 ls [24].txt
 ```
 
+```
+echo ???[1-9]*
+```
+
+0001-seq22 0002-seq23 0003-seq26 0004-seq37 0005-seq41 0006-seq42 0007-seq42 0008-seq45
+
 ## Parameter expansions
 
 ##### image.jpg -> image.png
