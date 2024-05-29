@@ -1184,6 +1184,12 @@ echo -e 'AAAA,BBB,CCCC\n001,00002,03' | column -t -s ','
 -t : table format, delete separator
 -s : separator
 
+## database output with tab
+
+```
+column -t -s "`printf '\t'`"
+```
+
 ## set operation
 
 ##### union
