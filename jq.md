@@ -65,6 +65,14 @@ cat ./sample.json | jq -r '.items[] | [.name, .size] | @tsv'
 cat ./sample.json | jq -r '.items[] | [.name, .size] | @csv'
 ```
 
+```
+jq -s -R 'split("\n")|map(split(","))|map({"id": .[0], "name": .[1]})' foobar.csv
+```
+
+```
+ruby -rcsv -rjson -e 'print CSV.new(STDIN.read, headers: true).to_a.map { |row| row.to_hash }.to_json' < foobar-2.csv
+```
+
 ## format
 
 ```
