@@ -1365,4 +1365,17 @@ diff -w <(echo "$a") <(echo "$b")
 
 ```
 
+## inconv
+
+```
+iconv -f ENCODING -t ENCODING INPUTFILE
+```
+
+| Encoding   | Alias |
+|------------|-------|
+| UTF-8      | UTF8  |
+| UTF-16     | UTF16 |
+| Shift-JIS  | SJIS  |
+| EUC-JP     | EUCJP |
+| JIS(ISO2022) | ISO2022JP+ |
 
