@@ -1,5 +1,27 @@
 # cheatsheet-bash
 
+## font
+
+https://github.com/yuru7/bizin-gothic
+
+```
+あいうえお
+漢字
+アイウエオ
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+0123456789
+@#$%^&*-_=+~
+\|/
+?!
+''""``''
+,.:;
+(){}[]<>
+（）「」『』【】
+07DZlrz|
+　←全角スペース
+```
+
 ## execute in Vim
 
 ```bash
@@ -1370,6 +1392,8 @@ diff -w <(echo "$a") <(echo "$b")
 ```
 iconv -f ENCODING -t ENCODING INPUTFILE
 ```
+
+-c : ignore error
 
 | Encoding   | Alias |
 |------------|-------|
