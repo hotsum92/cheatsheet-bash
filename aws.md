@@ -1,3 +1,6 @@
+```
+aws sts get-caller-identity
+```
 
 ```
 aws --version
