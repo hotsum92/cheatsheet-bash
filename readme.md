@@ -495,6 +495,12 @@ date -d "2024-04-15T08:16:16.000Z" -u +"%Y-%m-%dT%H:%M:%S.000Z"
 
 ## curl
 
+##### get global ip
+
+```
+curl ifconfig.me
+```
+
 ##### get with parameter
 
 ```
@@ -563,6 +569,28 @@ fi
 echo "$result"
 ```
 
+## tar
+
+c create
+x extract
+v verbose
+z gzip
+f name of file
+t list
+
+## expand
+
+```
+echo 'A	B	C' | expand
+echo 'A	B	C' | expand -t 1
+```
+
+## unexpand
+
+```
+echo 'A	B	C' | expand | unexpand -a
+```
+
 ## cut
 
 ##### 1 4
@@ -611,6 +639,8 @@ tac <(echo -e 'A\nB\nC')
 
 ## paste
 
+use generate data from different source
+
 ##### A\t1\nB\t2\nC\t3
 
 ```
@@ -631,10 +661,20 @@ paste -d, -s <(echo -e 'A\nB\nC') <(echo -e '1\n2\n3')
 
 ## join
 
+join need sort
+
 ##### join with firt column
 
 ```
 join <(echo -e '1 A\n2 B') <(echo -e '1 C\n2 E\n3 F')
+join -1 1 -2 1 <(echo -e '1 A\n2 B') <(echo -e '1 C\n2 E\n3 F')
+```
+
+##### left join
+
+```
+join -a 1 <(echo -e '1 A\n2 B\n4 G') <(echo -e '1 C\n2 E\n3 F')
+join -a 1 -e 'NULL' -o '1.1,1.2,2.2' <(echo -e '1 A\n2 B\n4 G') <(echo -e '1 C\n2 E\n3 F')
 ```
 
 ##### all permutation
@@ -661,6 +701,18 @@ echo 'A:B:C' | tr : '\n'
 
 ```
 echo 'A B C' | tr -d ' '
+```
+
+### A B C
+
+```
+echo "a b c" | tr [a-z] [A-Z]
+```
+
+### squize space
+
+```
+echo "a   b   c" | tr -s ' '
 ```
 
 ## grep
@@ -858,6 +910,12 @@ find . --maxdepth 1 -name '*.txt'
 
 ```
 find . -exec echo @ {} @ ';'
+```
+
+#### find files exceeding 1M
+
+```
+find . -size +1M
 ```
 
 ## yes
@@ -1216,7 +1274,7 @@ column -t -s "`printf '\t'`"
 
 ##### union
 
-A B C || B C D = B C
+A B C || B C D = A B C D
 
 ```
 cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') | sort | uniq
@@ -1228,6 +1286,7 @@ A B C && B C D = B C
 
 ```
 cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') | sort | uniq -d
+join <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD')
 ```
 
 ##### difference
