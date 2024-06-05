@@ -1470,3 +1470,11 @@ iconv -f ENCODING -t ENCODING INPUTFILE
 nkf -w input > output
 nkf -w --overwrite input
 ```
+
+## printf
+
+```
+printf 'value: %03d\n' 3
+printf 'value: %03d\n' 3 4 5
+printf '%5d\n' 3 +3 -3
+```
