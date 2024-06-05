@@ -1464,3 +1464,9 @@ iconv -f ENCODING -t ENCODING INPUTFILE
 | EUC-JP     | EUCJP |
 | JIS(ISO2022) | ISO2022JP+ |
 
+## nkf
+
+```
+nkf -w input > output
+nkf -w --overwrite input
+```
