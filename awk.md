@@ -115,6 +115,12 @@ awk '{print FILENAME, "FNR="FNR, "NR="NR, $0}' <(echo -e 'Beth 0\nDan 40') <(ech
 echo -e 'Beth 0\nDan 40' | awk '{print length($1)}'
 ```
 
+### print each line length
+
+```
+echo -e 'Beth 0\nDan 40' | awk '{print length}'
+```
+
 ## sort by column
 
 ```
