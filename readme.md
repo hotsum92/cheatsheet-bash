@@ -1502,3 +1502,10 @@ printf '%#e\n' 3 +3 -3
 printf "%'.f" 10000001
 echo 10000001 | sed -E ':l; s/^([0-9]+)([0-9]{4})/\1,\2/; t l;';
 ```
+
+## print certain line
+
+```
+sed -n '16224,16482p;16483q'
+grep -A 3 -B 1 -n kitaura smb.conf
+```
