@@ -18,3 +18,7 @@ where table_schema = database();
 `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '登録日時',
 `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時',
 ```
+
+```
+SHOW WARNINGS
+```
