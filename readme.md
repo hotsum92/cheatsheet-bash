@@ -995,6 +995,8 @@ echo $RANDOM # random number
 
 ## sed
 
+[advance](https://www.gnu.org/software/sed/manual/html_node/Execution-Cycle.html#Execution-Cycle)
+
 ##### options
 
 BRE .[\*^$
@@ -1006,6 +1008,12 @@ echo 'test' | sed -E 's/(es)/x\1x/g'
 
 ```
 echo '++xx++' | sed 's/+/a/g'
+```
+
+#### copy paste
+
+```
+sed 'h;$G'
 ```
 
 ##### test test
