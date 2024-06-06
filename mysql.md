@@ -22,3 +22,23 @@ where table_schema = database();
 ```
 SHOW WARNINGS
 ```
+
+#### csv
+
+```
+  SELECT column1, column2, column3
+    FROM table_name
+    INTO OUTFILE '/tmp/data.csv'
+  FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+ ESCAPED BY '"'
+   LINES TERMINATED BY '\r\n';
+```
+
+```
+エラー「ERROR 1290 (HY000): The MySQL server is running with the –secure-file-priv option so it cannot execute this statement」
+```
+
+```
+mysql> SELECT @@global.secure_file_priv;
+```
