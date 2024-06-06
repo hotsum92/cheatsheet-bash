@@ -1485,4 +1485,17 @@ nkf -w --overwrite input
 printf 'value: %03d\n' 3
 printf 'value: %03d\n' 3 4 5
 printf '%5d\n' 3 +3 -3
+printf '%-5d\n' 3 +3 -3
+printf '%+5d\n' 3 +3 -3
+printf '% 5d\n' 3 +3 -3
+printf '%05d\n' 3 +3 -3
+printf '%.10f\n' 0.001
+printf '%d\n' 1
+printf '%.2s\n' ABC
+printf '%.s=' {A..C}
+
+printf '%#x\n' 3 +3 -3
+printf '%#x\n' 3 +3 -3
+printf '%#g\n' 3 +3 -3
+printf '%#e\n' 3 +3 -3
 ```
