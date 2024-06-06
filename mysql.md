@@ -23,6 +23,11 @@ where table_schema = database();
 SHOW WARNINGS
 ```
 
+```
+SHOW GRANTS FOR 'username'@'%' \G
+show variables like '%s3_role%';
+```
+
 #### csv
 
 ```
