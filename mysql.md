@@ -47,3 +47,10 @@ ENCLOSED BY '"'
 ```
 mysql> SELECT @@global.secure_file_priv;
 ```
+
+without sudo
+
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+FLUSH PRIVILEGES;
+```
