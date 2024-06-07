@@ -1509,3 +1509,18 @@ echo 10000001 | sed -E ':l; s/^([0-9]+)([0-9]{4})/\1,\2/; t l;';
 sed -n '16224,16482p;16483q'
 grep -A 3 -B 1 -n kitaura smb.conf
 ```
+
+## time
+
+```
+start_time=`date +%s`
+
+### 時間測定したい処理 seconds
+sleep 3
+
+end_time=`date +%s`
+
+time=$((end_time - start_time))
+
+echo $time
+```
