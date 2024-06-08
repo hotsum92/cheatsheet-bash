@@ -1502,3 +1502,9 @@ printf '%#e\n' 3 +3 -3
 printf "%'.f" 10000001
 echo 10000001 | sed -E ':l; s/^([0-9]+)([0-9]{4})/\1,\2/; t l;';
 ```
+
+## sort with sentence length
+
+```
+echo -e 'A\nBB\nCCC' | awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-
+```
