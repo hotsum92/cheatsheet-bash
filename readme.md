@@ -1538,3 +1538,4 @@ file /bin/ls
 strings /bin/ls
 hexdump -C /bin/ls
 ```
+
