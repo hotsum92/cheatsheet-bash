@@ -1530,3 +1530,11 @@ time=$((end_time - start_time))
 
 echo $time
 ```
+
+## binary
+
+```
+file /bin/ls
+strings /bin/ls
+hexdump -C /bin/ls
+```
