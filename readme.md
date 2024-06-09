@@ -24,6 +24,18 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 　←全角スペース
 ```
 
+## LINENO
+
+```
+echo $LINENO
+```
+
+## error
+
+```
+test 'a' = 'b' || echo $?
+```
+
 ## execute in Vim
 
 ```bash
