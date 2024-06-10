@@ -1551,3 +1551,25 @@ strings /bin/ls
 hexdump -C /bin/ls
 ```
 
+
+
+```
+tail -f /path/to/file.log | sed '/^Finished: SUCCESS$/ q'
+```
+
+```
+tail -f my-file.log | grep -qx "Finished: SUCCESS"
+-q, meaning quiet, quits as soon as it finds a match
+
+-x makes grep match the whole line
+```
+
+```
+tail -f my-file.log | grep -m 1 "^Finished: "
+```
+-m 1 makes grep stop after the first match
+
+```
+tail -f my-file.log | tee >( grep -qx "Finished: SUCCESS" )
+```
+
