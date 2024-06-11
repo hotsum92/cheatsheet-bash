@@ -1,5 +1,11 @@
 # vim
 
+## default shell
+
+```
+set shell=/bin/bash
+```
+
 ## open link
 
 ```
