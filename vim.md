@@ -1,5 +1,11 @@
 # vim
 
+## default shell
+
+```
+set shell=/bin/bash
+```
+
 ## open link
 
 ```
@@ -64,3 +70,23 @@ current line
 windo diffthis
 ```
 
+## env
+
+```
+:let $v = 'value'
+:!echo $v
+```
+
+help let-environment
+
+## filetype
+
+```
+echo &filetype
+```
+
+## list all filetypes
+
+```
+echo join(map(filter(split(globpath(&rtp, 'ftplugin/*.vim'), '\n'), 'fnamemodify(v:val, ":t:r")'), "\n")
+```

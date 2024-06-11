@@ -1543,6 +1543,9 @@ time=$((end_time - start_time))
 echo $time
 ```
 
+seq 0 5 | xargs -n1 -i date -d+{}days -I 
+seq 0 5 | xargs -n1 -i date -d2017/01/01+{}days +%Y%m%d
+
 ## binary
 
 ```
@@ -1573,3 +1576,19 @@ tail -f my-file.log | grep -m 1 "^Finished: "
 tail -f my-file.log | tee >( grep -qx "Finished: SUCCESS" )
 ```
 
+## calculate
+
+```
+expr 1 + 1
+echo '1+1' | bc
+```
+
+## env
+
+```
+env
+```
+
+https://github.com/traefik/yaegi
+
+https://stackoverflow.com/questions/76490480/aws-logs-tail-follow-until-it-find-the-phrase
