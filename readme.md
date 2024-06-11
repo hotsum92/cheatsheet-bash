@@ -1573,3 +1573,15 @@ tail -f my-file.log | grep -m 1 "^Finished: "
 tail -f my-file.log | tee >( grep -qx "Finished: SUCCESS" )
 ```
 
+## calculate
+
+```
+expr 1 + 1
+echo '1+1' | bc
+```
+
+## env
+
+```
+env
+```

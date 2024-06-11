@@ -64,3 +64,11 @@ current line
 windo diffthis
 ```
 
+## env
+
+```
+:let $v = 'value'
+:!echo $v
+```
+
+help let-environment
