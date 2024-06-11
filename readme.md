@@ -1585,3 +1585,5 @@ echo '1+1' | bc
 ```
 env
 ```
+
+https://github.com/traefik/yaegi
