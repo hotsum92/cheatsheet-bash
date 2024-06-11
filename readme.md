@@ -1543,6 +1543,9 @@ time=$((end_time - start_time))
 echo $time
 ```
 
+seq 0 5 | xargs -n1 -i date -d+{}days -I 
+seq 0 5 | xargs -n1 -i date -d2017/01/01+{}days +%Y%m%d
+
 ## binary
 
 ```
