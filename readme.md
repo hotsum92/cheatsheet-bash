@@ -1590,3 +1590,5 @@ env
 ```
 
 https://github.com/traefik/yaegi
+
+https://stackoverflow.com/questions/76490480/aws-logs-tail-follow-until-it-find-the-phrase
