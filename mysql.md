@@ -1,3 +1,11 @@
+## log all queries
+
+```
+show variables like 'general_log';
+set global general_log = 'ON';
+" /var/lib/mysql/test-host.log
+```
+
 ## db summary
 
 ```
@@ -28,7 +36,7 @@ SHOW GRANTS FOR 'username'@'%' \G
 show variables like '%s3_role%';
 ```
 
-#### csv
+#### csv export
 
 ```
   SELECT column1, column2, column3
@@ -53,6 +61,23 @@ without sudo
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 FLUSH PRIVILEGES;
+```
+
+#### csv import
+
+```
+LOAD DATA INFILE '/tmp/data.csv'
+INTO TABLE <table_name>
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '\"'
+IGNORE 1 LINES
+(
+  @date,
+  @number_of_questions
+)
+SET
+  seq_file_id = 'id'
+  number_of_questions = @number_of_questions
 ```
 
 ## get relative tables
