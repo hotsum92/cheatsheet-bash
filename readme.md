@@ -1600,3 +1600,4 @@ xmllint --html - 2> /dev/null
 ```
 
 https://docs.mitmproxy.org
+https://github.com/kedarvj/mysql-random-data-generator
