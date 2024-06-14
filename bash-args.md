@@ -1,3 +1,43 @@
+## options
+
+```
+while [ $# -gt 0 ]; do
+do
+  case $1 in
+    -o | --option)
+      if [ -z "$2" ]; then
+        echo "option requires an argument"
+        exit 1
+      fi
+
+      echo "option $2"
+      ;;
+    -h | --help)
+      echo "help"
+      exit 0
+      ;;
+    -*)
+      echo "invalid option"
+      exit 1
+      ;;
+    *)
+      echo "argument $1"
+      ;;
+  esac
+  shift
+done
+```
+
+## arguments
+
+```
+
+function args { [ $# -eq 0 ] && echo 'no arguments'; }; args
+function args { echo $#; }; args '1 2' '3' '4'
+function args { for v in "$@"; do echo "$v"; done | cat; }; args '1 2' '3' '4'
+
+```
+
 
 ## conditions
 
@@ -30,8 +70,6 @@
 [ -e file.txt ] && [ -e dir ] && echo 'file and dir exists'
 
 [[ '{errors: {}}' =~ .*errors.* ]] && echo 'errors'
-
-function args { [ $# -eq 0 ] && echo 'no arguments'; }; args
 
 ```
 
