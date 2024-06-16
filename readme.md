@@ -1639,3 +1639,11 @@ arp: arp packet
 not arp: not arp packet
 arp[6:2] == 1: arp request
 arp[6:2] == 2: arp reply
+## html
+
+```
+xmllint --html - 2> /dev/null
+```
+
+https://docs.mitmproxy.org
+https://github.com/kedarvj/mysql-random-data-generator
