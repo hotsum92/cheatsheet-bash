@@ -1592,3 +1592,50 @@ env
 https://github.com/traefik/yaegi
 
 https://stackoverflow.com/questions/76490480/aws-logs-tail-follow-until-it-find-the-phrase
+
+## tcpdump
+
+```
+tcpdump -i  net0 -w - -U ether host 02:42:ac:01:10:01 | tee /tmp/tinet/ethernet.pcapng | tcpdump -r -
+```
+
+```
+tcpdump -A -n -e -r -
+```
+
+-A: print ascii
+-n: Don't convert addresses
+-e: print link-level header
+
+## tshark
+
+```
+tshark -w - | tshark -r - -x
+tshark -T fields -e eth.src -e eth.dst -r -
+tshark -T pdml -r -
+```
+
+-x: hex dump
+-T pdml: print all
+
+## filter
+
+```
+tshark -r - -Y 'eth.src == 02:42:ac:01:10:01'
+```
+
+eth.src: source mac address
+eth.dst: destination mac address
+eth.addr: source or destination mac address
+
+```
+tcpdump -n -r - 'ether src 02:42:ac:01:10:01'
+```
+
+ether src: source mac address
+ether dst: destination mac address
+ether host: source or destination mac address
+arp: arp packet
+not arp: not arp packet
+arp[6:2] == 1: arp request
+arp[6:2] == 2: arp reply
