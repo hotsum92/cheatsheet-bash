@@ -731,6 +731,14 @@ echo "a   b   c" | tr -s ' '
 
 ## grep
 
+##### list of search
+
+```
+cat list.txt | xargs -I {} grep {} file.txt
+< list.txt xargs -I {} grep {} file.txt
+grep -F -f list.txt file.txt
+```
+
 ##### fixed string
 
 ```
