@@ -1456,6 +1456,12 @@ echo '{"items":[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]}' | jq -r '
 echo '[{"name":"1", "value":"a"},{"name":"2", "value":"b"}]' | jq -c '.[]'
 ```
 
+```
+cat ./dump.html | \
+  pup 'a json{}' | \
+  jq -r '.[] | [.href, .text] | @tsv' | \
+```
+
 ## diff
 
 ```

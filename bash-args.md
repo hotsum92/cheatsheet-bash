@@ -35,7 +35,6 @@ done
 function args { [ $# -eq 0 ] && echo 'no arguments'; }; args
 function args { echo $#; }; args '1 2' '3' '4'
 function args { for v in "$@"; do echo "$v"; done | cat; }; args '1 2' '3' '4'
-
 ```
 
 
@@ -97,3 +96,10 @@ fi
 
 ```
 
+### multiple arguments
+
+```
+for v in "$@"; do
+  echo "$v";
+done | cat;
+```
