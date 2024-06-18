@@ -631,26 +631,6 @@ echo '1 2 3 4 5' | cut -d' ' -f2-
 echo '1234-67-90' | cut -c1-4
 ```
 
-## cat
-
-##### A\nB\nC
-
-```
-cat <(echo -e 'A\nB\nC')
-```
-
-##### A\nB\nC
-
-```
-cat <(echo 'A') <(echo 'B') <(echo 'C')
-```
-
-##### C\nB\nA
-
-```
-tac <(echo -e 'A\nB\nC')
-```
-
 ## paste
 
 use generate data from different source
