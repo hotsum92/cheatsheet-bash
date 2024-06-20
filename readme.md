@@ -521,12 +521,15 @@ curl ifconfig.me
 curl -G -d key='value' localhost:8080
 ```
 
+curl -v --trace-ascii -
 
 ##### post json
 
 ```
 curl -d "{\"hello\": \"world\"}" -H "Content-Type: application/json" http://localhost:8000
 ```
+
+curl -d @file.json -H "Content-Type: application/json" http://localhost:8000
 
 ##### read from stdin
 
@@ -1600,6 +1603,9 @@ tcpdump -A -n -e -r -
 -A: print ascii
 -n: Don't convert addresses
 -e: print link-level header
+
+nslookup <domain>
+
 
 ## tshark
 
