@@ -38,4 +38,22 @@ git blame -L 1,10 file
 
 git show HEAD^:main.cpp > old_main.cpp
 
+## ref commit by commit message
 
+```
+git log :/message
+```
+
+## ref object from commit
+
+```
+git show a1b2c3d4:file
+```
+
+## get commit hash
+
+```
+git show --no-patch --pretty="%h" :/imp
+git rev-parse :/imp
+git rev-parse --short :/imp
+```
