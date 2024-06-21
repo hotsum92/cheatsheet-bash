@@ -1647,3 +1647,20 @@ xmllint --html - 2> /dev/null
 
 https://docs.mitmproxy.org
 https://github.com/kedarvj/mysql-random-data-generator
+
+
+comm
+dd if=/dev/zero of=junk.data bs=1M count=1
+mktemp test.xxx
+mktemp -u
+mktemp -d
+uniq -z
+uniq -d
+uniq -u
+tr -s
+tr -c -d '0-9 \n'
+cat -n file.txy
+cat -T file.txt
+cat -s file.txt
+cat - file.txt
+Length ${#var}
