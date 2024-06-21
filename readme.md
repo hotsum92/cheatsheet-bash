@@ -1664,3 +1664,7 @@ cat -T file.txt
 cat -s file.txt
 cat - file.txt
 Length ${#var}
+
+
+error=$(mktemp)
+curl -i
