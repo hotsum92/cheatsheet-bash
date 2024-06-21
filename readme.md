@@ -1668,3 +1668,9 @@ Length ${#var}
 
 error=$(mktemp)
 curl -i
+
+curl -X POST \
+  -i \
+  -s \
+  --show-error \
+  --fail \
