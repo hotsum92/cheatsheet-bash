@@ -1,3 +1,37 @@
+## create user table
+
+docker run --rm --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql
+
+```
+create database test;
+```
+
+```
+
+create table user (
+  id int primary key auto_increment,
+  name varchar(255) not null default '',
+  email varchar(255) not null default '',
+  password varchar(255) not null default '',
+  created_at timestamp not null default current_timestamp,
+  updated_at timestamp not null default current_timestamp on update current_timestamp
+);
+
+```
+
+```
+
+create table login (
+  id int primary key auto_increment,
+  user_id int not null,
+  token varchar(255) not null default '',
+  created_at timestamp not null default current_timestamp,
+  updated_at timestamp not null default current_timestamp on update current_timestamp,
+  constraint fk_user_id foreign key (user_id) references user(id)
+);
+
+```
+
 ## log all queries
 
 ```
@@ -49,10 +83,6 @@ ENCLOSED BY '"'
 ```
 
 ```
-エラー「ERROR 1290 (HY000): The MySQL server is running with the –secure-file-priv option so it cannot execute this statement」
-```
-
-```
 mysql> SELECT @@global.secure_file_priv;
 ```
 
@@ -90,5 +120,12 @@ From INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS As RC
     Join INFORMATION_SCHEMA.TABLE_CONSTRAINTS As FK
         On FK.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
 Where PK.TABLE_SCHEMA = 'dbo'
-    And PK.TABLE_NAME = '<target table name>'  
+    And PK.TABLE_NAME = '<target table name>';
+```
+
+## mysqldump
+
+```
+mysqldump -u root -p --databases <database name> > <file name>.sql
+mysqldump <database name> -t where 'id in (1, 2, 3)' > <file name>.sql
 ```

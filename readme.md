@@ -1320,6 +1320,8 @@ cat <(echo -e 'A\nB\nC') <(echo -e 'B\nC\nD') <(echo -e 'B\nC\nD') | sort | uniq
 
 ## docker
 
+docker run --rm --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql
+
 ##### dump database
 
 ```
