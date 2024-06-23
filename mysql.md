@@ -147,3 +147,4 @@ mysqldump <database name> -t where 'id in (1, 2, 3)' > <file name>.sql
 ```
 jdbc:mysql://localhost:3307?useSSL=false
 ```
+
