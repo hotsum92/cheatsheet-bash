@@ -1,6 +1,12 @@
+## connect docker mysql
+
+```
+mysql -h $(hostname -i) -P 3307 -u root
+```
+
 ## create user table
 
-docker run --rm --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql
+docker run --rm --name mysql -p 3307:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql
 
 ```
 create database test;
@@ -131,3 +137,13 @@ mysqldump <database name> -t where 'id in (1, 2, 3)' > <file name>.sql
 ```
 
 --extended-insert
+
+## jailer
+
+[jailer](https://github.com/Wisser/Jailer)
+
+##### localhost connection
+
+```
+jdbc:mysql://localhost:3307?useSSL=false
+```
