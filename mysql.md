@@ -129,3 +129,5 @@ Where PK.TABLE_SCHEMA = 'dbo'
 mysqldump -u root -p --databases <database name> > <file name>.sql
 mysqldump <database name> -t where 'id in (1, 2, 3)' > <file name>.sql
 ```
+
+--extended-insert
