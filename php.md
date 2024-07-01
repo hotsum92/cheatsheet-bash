@@ -19,3 +19,11 @@ foreach (getallheaders() as $name => $value) {
     error_log(print_r("$name: $value", true));
 }
 ```
+
+## response with json
+
+```php
+header('Content-Type: application/json');
+$students = json_decode(file_get_contents('students.json'), true);
+echo json_encode($students);
+```
