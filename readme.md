@@ -1,5 +1,11 @@
 # cheatsheet-bash
 
+## move to script directory
+
+```
+cd $(dirname $0)
+```
+
 ## font
 
 https://github.com/yuru7/bizin-gothic
@@ -1397,6 +1403,18 @@ php -S localhost:8000 <rouetr.php>
 
 ```
 echo {1..3} | xargs -n1 | php -R 'echo $argn,"\n";'
+```
+
+##### base64 encode
+
+```
+echo 'Q0xJTkVUX0lEOkNMSUVOVF9TRUNSRVQ=' | base64 -d
+CLINET_ID:CLIENT_SECRET
+```
+
+```
+echo -n 'CLINET_ID:CLIENT_SECRET' | base64
+Q0xJTkVUX0lEOkNMSUVOVF9TRUNSRVQ=
 ```
 
 ##### decode url
