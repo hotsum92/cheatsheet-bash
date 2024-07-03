@@ -3,9 +3,29 @@ gnuplot --persist -e 'plot sin(x)'
 ```
 
 ```
-gnuplot --persist << EOF
-plot sin(x)
+echo -e "1 2 3\n2 3 4\n3 4 5" | \
+gnuplot --persist -e 'plot "-" using 1:2 with lines'
+
+echo -e "1 2 3\n2 3 4\n3 4 5" | \
+gnuplot --persist -e 'plot "-" with points'
+```
+
+```
+src=$(cat << 'EOF'
+plot "-" using 1:2 with lines,
+     "-" using 1:3 with lines;
 EOF
+)
+echo -e "1 2 3\n2 3 4\n3 4 5\ne\n1 2 3\n2 3 4\n3 4 5" | \
+gnuplot -p -e "$src"
+
+src=$(cat << 'EOF'
+plot for [i=2:*] "-" using 1:i with lines;
+EOF
+)
+echo -e "1 2 3\n2 3 4\n3 4 5\ne\n1 2 3\n2 3 4\n3 4 5" | \
+gnuplot -p -e "$src"
+
 ```
 
 ```
@@ -44,10 +64,6 @@ set ylabel "percent"
 plot "data.csv" using 1:3 title "A","data.csv" using 1:4 title "B"
 EOF
 
-```
-
-```
-gnuplot --persist -e 'plot for [i=2:*] "< cat -" using 1:i title columnheader(i) with linespoints'
 ```
 
 ```
