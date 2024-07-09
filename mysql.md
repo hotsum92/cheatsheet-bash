@@ -101,6 +101,8 @@ FLUSH PRIVILEGES;
 
 #### csv import
 
+mysql -u root -p --local_infile=1
+
 ```
 LOAD DATA INFILE '/tmp/data.csv'
 INTO TABLE <table_name>
