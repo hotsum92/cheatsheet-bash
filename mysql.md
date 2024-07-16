@@ -1,6 +1,10 @@
 ## connect docker mysql
 
 ```
+select version();
+```
+
+```
 mysql -h $(hostname -i) -P 3307 -u root
 ```
 
@@ -150,3 +154,33 @@ mysqldump <database name> -t where 'id in (1, 2, 3)' > <file name>.sql
 jdbc:mysql://localhost:3307?useSSL=false
 ```
 
+```
+show tables like '%JAILER%';
+
+DROP TABLE JAILER_CONFIG;
+DROP TABLE JAILER_DEPENDENCY;
+DROP TABLE JAILER_ENTITY;
+DROP TABLE JAILER_GRAPH;
+DROP TABLE JAILER_SET;
+DROP TABLE JAILER_TMP;
+```
+
+
+```
+explain analyze
+with A(n)
+as (
+select 1
+union select 2
+union select 3
+),
+B(n)
+as (
+select 1
+union select 2
+union select 3
+union select 4
+)
+select * from B
+inner join A on B.n = A.n
+```
