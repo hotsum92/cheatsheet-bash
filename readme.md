@@ -1694,3 +1694,6 @@ curl -X POST \
   -s \
   --show-error \
   --fail \
+
+セル毎の違いはexcelの方が楽
+https://qiita.com/dorarep/items/5709035d79745c2ed8ad
