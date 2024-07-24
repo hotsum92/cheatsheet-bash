@@ -18,3 +18,8 @@ cat ./foobar.csv | header -r v1,v2,v3
 ```
 cat ./foobar.csv | body grep foo | csvlook
 ```
+
+```
+cat ./foobar.csv | csvstat
+cat ./foobar.csv | csvsql
+```
