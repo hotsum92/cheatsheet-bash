@@ -5,5 +5,6 @@
 
 ```
 function unbom { LC_ALL=C sed -e $'1s/^\xef\xbb\xbf//'; }
-echo -n $'\xef\xbb\xbftest' | unbom
+function bom { LC_ALL=C sed -e $'1s/^/\xef\xbb\xbf/'; }
+echo -n 'あ' | bom | unbom
 ```
