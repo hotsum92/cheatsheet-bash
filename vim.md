@@ -90,3 +90,14 @@ echo &filetype
 ```
 echo join(map(filter(split(globpath(&rtp, 'ftplugin/*.vim'), '\n'), 'fnamemodify(v:val, ":t:r")'), "\n")
 ```
+
+## enclosing in parethese
+
+```
+cw(<C-r><C-o>")<ESC>
+```
+
+```
+:h i_CTRL-R_CTRL-O
+:h i_^-R_^-O
+```
