@@ -1697,3 +1697,7 @@ curl -X POST \
 
 セル毎の違いはexcelの方が楽
 https://qiita.com/dorarep/items/5709035d79745c2ed8ad
+
+
+find . -exec test -d {} \; -print
+find . | parallel "[ -d {} ] && echo {}"
