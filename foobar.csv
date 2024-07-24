@@ -1,2 +1,3 @@
-1,foo
-2,bar
+id,name,age
+1,foo,20
+2,bar,30
