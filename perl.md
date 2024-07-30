@@ -4,8 +4,11 @@ $_: each line
 $.: line number
 
 ```
-echo 'test' | perl -n -e 'print($.)'
+echo 'test' | perl -w -n -e 'print($.)'
 ```
+
+-w: warning
+-l: add line break to print
 
 ```
 echo 'test' | perl -p -e 'print("test")'
