@@ -58,3 +58,10 @@ echo -e 'a\nb\nc' | perl -n -e 'print($. . " " . $_)'
 echo -e 'a\n#b\nc' | perl -n -e 'print unless /^#/'
 echo -e 'a\n#b\nc' | perl -n -e 'print if !/^#/'
 ```
+
+## word boundary
+
+```
+echo "0,10,0,203" |
+perl -pe 's/\b0\b/ int(rand(100)) /ge'
+```
