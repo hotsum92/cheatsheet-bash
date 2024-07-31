@@ -23,3 +23,5 @@ cat ./foobar.csv | body grep foo | csvlook
 cat ./foobar.csv | csvstat
 cat ./foobar.csv | csvsql
 ```
+
+https://github.com/shenwei356/csvtk

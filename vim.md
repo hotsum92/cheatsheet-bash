@@ -101,3 +101,8 @@ cw(<C-r><C-o>")<ESC>
 :h i_CTRL-R_CTRL-O
 :h i_^-R_^-O
 ```
+
+```
+:put =system('date')
+:put =system('echo $RANDOM')
+```
