@@ -1722,3 +1722,36 @@ awk -v ORS= '
   END {print "\n"}'
 
 https://unix.stackexchange.com/questions/323440/concatenate-lines-based-on-first-char-of-next-line
+https://catonmat.net/awk-one-liners-explained-part-one
+https://catonmat.net/sed-one-liners-explained-part-one
+https://catonmat.net/perl-one-liners-explained-part-one
+
+seq 1 10 | awk '{ print $1;getline t; print "A" }'
+seq 1 10 | awk '{ print $1 | "sort -nr" }'
+
+echo {1..3}{1..3} | tr ' ' '\n' | sed 's/./&\n/' |
+awk 'a != $0; { a = $0 }'
+
+echo {1..3}{1..3} | tr ' ' '\n' | sed 's/./&\n/' |
+awk '!a[$0]++'
+
+sed = filename | sed 'N;s/\n/\t/'
+
+echo '1
+2
+3' |
+sed '1!G;h;$!d'
+
+echo '1 \
+2
+3 \
+4 \
+5' |
+sed -e :a -e '/\\$/N; s/\\\n//; ta'
+
+echo '1
+,2
+,3
+4
+,5' |
+sed -e :a -e '$!N;s/\n,/,/;ta' -e 'P;D'
