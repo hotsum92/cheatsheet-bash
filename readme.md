@@ -1701,3 +1701,24 @@ https://qiita.com/dorarep/items/5709035d79745c2ed8ad
 
 find . -exec test -d {} \; -print
 find . | parallel "[ -d {} ] && echo {}"
+
+## paste two lines
+
+```
+echo -e '1 2\n3\n4 5\n6' | paste -d' ' - -
+```
+
+echo -e '1 2\n3\n4 5\n6' |
+awk -v ORS= '
+  NR>1 && !/^3/ {print "\n"}
+  {print}
+  END {print "\n"}'
+
+echo -e '1 2\n3\n4 5\n6' |
+awk -v ORS= '
+  NR>1 && !/^3/ {print "\n"}
+  NR>1 && /^3/ {print " "}
+  {print}
+  END {print "\n"}'
+
+https://unix.stackexchange.com/questions/323440/concatenate-lines-based-on-first-char-of-next-line
