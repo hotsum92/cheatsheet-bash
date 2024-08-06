@@ -207,3 +207,11 @@ echo -e 'name06\tname17\nname08\tname19' \
 ```
 awk 'FNR==NR { table[$1][$2] = $3; next; } { print table[$1][$2] }' table.tsv <(echo -e 'name06\tname17\nname08\tname19')
 ```
+
+## count match
+
+```
+echo -e '\t\t\t' | awk '{print gsub("\t", "&")}'
+echo -e '\t\t\t' | awk -F'\t' '{print NF-1}'
+echo -e '\t\t\t' | perl -lne 'print scalar(() = /\t/g)'
+```
