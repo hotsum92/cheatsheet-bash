@@ -66,3 +66,9 @@ for(var i=0; i < maxId; i+=1) {
 console.log({ "element": $0 });
 
 ```
+
+##### get all text
+
+```
+copy([...$0.querySelectorAll('*')].filter(e => e.children.length == 0).map(e => e.textContent).filter(t => !!t).join("\n"))
+```
