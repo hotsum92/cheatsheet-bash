@@ -106,3 +106,19 @@ cw(<C-r><C-o>")<ESC>
 :put =system('date')
 :put =system('echo $RANDOM')
 ```
+
+## edit stream
+
+```
+echo "foo bar" | vim -E +%s/foo.// +%p -cq! /dev/stdin
+```
+
+Using ex command is equivalent to run Vim in Ex mode (vim -e).
++'cmd'/-c {cmd} - Invokes Ex command.
+-cq! - Forcibly quit Vim as we're not saving any files.
+-s - Run in silent mode (prevents extra screen flashes).
+/dev/stdin - We use /dev/stdin as an input file, because using - doesn't work properly.
+1s/pattern/something/g - Substitute pattern with something in the 1st line.
+2,/pattern/d - Delete content starting from the 2nd line to the line with pattern.
+%j - Joins all the lines together.
+%p - Prints the buffer to the console output.
