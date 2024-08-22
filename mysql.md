@@ -67,6 +67,10 @@ where table_schema = database();
 ```
 
 ```
+SET SESSION information_schema_stats_expiry= 1;
+```
+
+```
 `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '登録日時',
 `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時',
 ```
