@@ -68,6 +68,7 @@ where table_schema = database();
 
 ```
 SET SESSION information_schema_stats_expiry= 1;
+analyze table test;
 ```
 
 ```
@@ -188,3 +189,8 @@ union select 4
 select * from B
 inner join A on B.n = A.n
 ```
+
+## data size
+
+https://www.mysqldatatypes.com/
+https://zenn.dev/gorogoroumaru/articles/7b3b8cf2aeef63
