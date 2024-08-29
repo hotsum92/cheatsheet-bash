@@ -109,3 +109,6 @@ ruby -rjson -ryaml -e 'print YAML.load(STDIN.read).to_json' < sample.json
 
 
 ruby -rjson -ryaml -e 'print JSON.parse(STDIN.read).to_yaml' | tr -d ' ' | awk -F: '{ print "key:", $1",", "value:", $2 }'
+
+
+pup 'head meta json{}' | jq '.[] | select(.property != null) | { (.property): .content }' | jq -s add
