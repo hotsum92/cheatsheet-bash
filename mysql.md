@@ -67,6 +67,11 @@ where table_schema = database();
 ```
 
 ```
+SET SESSION information_schema_stats_expiry= 1;
+analyze table test;
+```
+
+```
 `registered_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '登録日時',
 `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時',
 ```
@@ -184,3 +189,8 @@ union select 4
 select * from B
 inner join A on B.n = A.n
 ```
+
+## data size
+
+https://www.mysqldatatypes.com/
+https://zenn.dev/gorogoroumaru/articles/7b3b8cf2aeef63

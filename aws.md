@@ -41,3 +41,12 @@ aws logs filter-log-events --log-group-name [ロググループ名] [その他�
 sqs
 lambda
 
+
+## 時間の指定
+  --start-time "$(date --date='15minutes ago' +%s%3N)"
+
+# 相対時間指定
+$ date --date='15minutes ago' +%s%3N
+
+# 絶対時間指定
+$ date --date='2022-07-05 17:30:10' +%s000
